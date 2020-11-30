@@ -1,0 +1,22 @@
+[alias]
+        co = checkout
+        br = branch
+        ci = commit
+        st = status
+        last = log --stat -1 HEAD
+        pu = !git push -u origin `git_branch`
+        pf = !git push -f origin `git_branch`
+        rd = rebase develop
+        rdi = rebase -i develop
+        p = pull
+        pur = !git co develop && git pull && git co @{-1} && git rebase develop
+        puri = !git co develop && git pull && git co @{-1} && git rebase -i develop
+[filter "lfs"]
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+        required = true
+        clean = git-lfs clean -- %f
+[url "git@github.com:"]
+        insteadOf = https://github.com/
+[color]
+        ui = auto
